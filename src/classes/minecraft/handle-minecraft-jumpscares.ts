@@ -17,4 +17,18 @@ export class MinecraftJumpscares extends MinecraftAction {
   public async doorScare() {
     await this.execute("jumpscare.door_scare");
   }
+
+  public async endermanScare() {
+    await this.execute("jumpscare.EndermanJumpscare");
+  }
+
+  public async SpinningPlayerScare() {
+    await this.execute("jumpscare.SpinningPlayer");
+  }
+
+  public async welcome_home(viewer_name: string) {
+    await this.execute("jumpscare.welcome_home" , {
+      viewer_name: viewer_name,
+    });
+  }
 }

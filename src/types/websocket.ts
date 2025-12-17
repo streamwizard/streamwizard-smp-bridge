@@ -2,7 +2,7 @@ export type MinecraftActionsType = MinecraftEvents | MinecraftJumpscares | Minec
 
 export type MinecraftEvents = "event.launce" | "event.random_mob_spawn" | "event.twitch_subscription";
 
-export type MinecraftJumpscares = "jumpscare.fake_damage" | "jumpscare.fireworks" | "jumpscare.door_scare";
+export type MinecraftJumpscares = "jumpscare.fake_damage" | "jumpscare.fireworks" | "jumpscare.door_scare" | "jumpscare.EndermanJumpscare" | "jumpscare.SpinningPlayer" | "jumpscare.welcome_home";
 
 export type MinecraftDisasters = "disaster.supernova" | "disaster.windstorm";
 
