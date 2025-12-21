@@ -16,7 +16,6 @@ export class MinecraftWebSocketServer {
       port: 8888,
 
       fetch: (req, server) => {
-        console.log("Fetching");
         if (!server.upgrade(req, { data: { createdAt: Date.now() } })) {
           return new Response("WebSocket upgrade failed", {
             status: 400,
@@ -31,13 +30,11 @@ export class MinecraftWebSocketServer {
         idleTimeout: 60,
 
         open: (ws) => {
-          console.log("Open");
           this.clients.set(ws, ws.data);
         },
 
         message: async (ws, message) => {
           try {
-            console.log("Message");
             const parsed = this.parseMessage(message.toString());
             await this.handleMessage(ws, parsed);
           } catch (error) {

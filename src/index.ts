@@ -6,7 +6,7 @@ import customLogger from "./lib/logger";
 
 async function main() {
   try {
-    const EventSubReceiver = new TwitchEventSubReceiver("wss://eventsub.wss.twitch.tv/ws", handlers);
+    const EventSubReceiver = new TwitchEventSubReceiver("ws://127.0.0.1:8080/ws", handlers);
 
     // Handle graceful shutdown
     process.on("SIGINT", async () => {

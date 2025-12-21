@@ -18,5 +18,8 @@ export async function handleChannelChannelPointsCustomRewardRedemptionAdd(event:
   //   volume: 1.0,
   // });
 
-  await minecraftActions.Jumpscares.doorScare();
+  await minecraftActions.Disasters.superNova({
+    level: 10,
+    viewer_name: event.user_name,
+  });
 }

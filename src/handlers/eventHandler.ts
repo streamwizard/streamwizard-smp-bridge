@@ -5,6 +5,7 @@ import { registerTwitchHandlers } from "./twitch";
 import { TwitchApi } from "@/classes/twitchApi";
 import MinecraftActionBase from "@/classes/minecraft/handle-minecraft-action-base";
 import { MinecraftActions } from "@/classes/minecraft/handle-minecraft-actions";
+import { handleSmpAction } from "@/functions/handleSmpAction";
 
 export class HandlerRegistry {
   private twitchHandlers = new Map<string, (data: unknown, twitchApi: TwitchApi, minecraftActions: MinecraftActions) => Promise<void>>();
@@ -43,6 +44,8 @@ export class HandlerRegistry {
 
     const twitchApi = new TwitchApi(broadcasterId);
     const minecraftActions = new MinecraftActions(broadcasterId, twitchApi);
+    
+    await handleSmpAction(eventType, data, minecraftActions);
 
     const handler = this.twitchHandlers.get(eventType);
 
