@@ -3,7 +3,6 @@
   "module": "src/index.ts",
   "type": "module",
   "private": true,
-
   "scripts": {
     "start": "bun run src/index.ts"
   },
@@ -14,6 +13,8 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
+    "axios": "^1.13.2",
     "lovely-logs": "^2.7.2",
     "zod": "^4.2.1"
   }

@@ -61,6 +61,8 @@ export async function getTwitchAppToken(): Promise<string> {
     throw error;
   }
 
+  console.log("🔄 Twitch app token:", data);
+
   // Check if token is expired by comparing current time with updated_at + expires_in
   const updatedAtTimestamp = new Date(data.updated_at).getTime();
   const expiresInMs = data.expires_in * 1000; // Convert seconds to milliseconds
@@ -68,6 +70,7 @@ export async function getTwitchAppToken(): Promise<string> {
 
   if (isExpired) {
     // Refresh token
+    console.log("🔄 Refreshing twitch app token");
     const response = await axios.post("https://id.twitch.tv/oauth2/token", null, {
       params: {
         client_id: env.TWITCH_CLIENT_ID,
@@ -85,7 +88,7 @@ export async function getTwitchAppToken(): Promise<string> {
 
 // update twitch app token in supabase
 export async function updateTwitchAppToken(accessToken: string, expiresIn: number): Promise<void> {
-  const { data, error } = await supabase.from("twitch_app_token").update({ access_token: accessToken, expires_in: expiresIn }).single();
+  const { data, error } = await supabase.from("twitch_app_token").update({ access_token: accessToken, expires_in: expiresIn }).eq("id", "d8a84af6-eb48-4569-ba8c-ae8835e5a3b2").single();
 
   if (error) {
     throw error;
